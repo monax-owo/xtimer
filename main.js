@@ -1,9 +1,9 @@
 // ==UserScript==
-// @name         New Userscript
-// @namespace    monax
+// @name         xtimer
+// @namespace    monax-owo
 // @version      2024-02-19
-// @description  try to take over the world!
-// @author       You
+// @description  作業進んでますか？
+// @author       monax-owo
 // @match        twitter.com/*
 // @icon         none
 // @grant        none
@@ -16,15 +16,21 @@ console.log("active!");
 //
 //
 const style = `
-#x-timer-root {
-height: 20px;
-width: 80px;
-position: fixed;
-top: 20px;
-left: 20px;
-background-color: darkgray;
 
-  }
+
+
+#x-timer-root {
+  height: 20px;
+  width: 80px;
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background-color: darkgray;
+}
+
+
+
+
   `;
 //
 window.onload = () => {
