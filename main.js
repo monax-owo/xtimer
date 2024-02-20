@@ -31,14 +31,14 @@ background-color: darkgray;
   `;
 
   //
-  const navEl = document.createElement("div");
-  navEl.id = "x-timer-nav";
 
   window.onload = () => {
     const nav = document.querySelector(
       `#react-root > div > div > div.css-175oi2r.r-1f2l425.r-13qz1uu.r-417010.r-18u37iz > header > div > div > div > div:nth-child(1) > div.css-175oi2r.r-15zivkp.r-1bymd8e.r-13qz1uu.r-1awozwy > nav`
     );
     console.log(nav);
+    const navEl = document.createElement("div");
+    navEl.id = "x-timer-nav";
     nav.appendChild(navEl);
   };
   //
