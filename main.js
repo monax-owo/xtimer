@@ -10,58 +10,61 @@
 // ==/UserScript==
 
 const limit = "00:30"; // MM:SS
-var tString;
+var elapsedT;
 var startTime;
 console.log("active!");
 //
+const d = document;
+const getId = d.getElementById;
+const getClassName = d.getElementsByClassName;
+const getTagName = d.getElementsByTagName;
+const getName = d.getElementsByName;
+const selector = d.querySelector;
+const selectorAll = d.querySelectorAll;
+const createEl = d.createElement;
 //
 const style = `
-
-
-
 #x-timer-root {
   height: 20px;
   width: 80px;
   position: fixed;
-  top: 20px;
-  left: 20px;
+  margin: auto;
+  inset: 0;
+  top: 10;
   background-color: darkgray;
 }
-
-
-
-
   `;
 //
 window.onload = () => {
-  const nav = document.querySelector(
+  const nav = selector(
     `#react-root > div > div > div.css-175oi2r.r-1f2l425.r-13qz1uu.r-417010.r-18u37iz > header > div > div > div > div:nth-child(1) > div.css-175oi2r.r-15zivkp.r-1bymd8e.r-13qz1uu.r-1awozwy > nav`
   );
   console.log(nav);
 };
-
-const navEl = document.createElement("div");
+const navEl = createEl("div");
 navEl.id = "x-timer-nav";
-
-//
-//
 const html = document.documentElement;
 const body = document.body;
-//
 // root
-const timerRootEl = document.createElement("div");
+const timerRootEl = createEl("div");
 timerRootEl.id = "x-timer-root";
-timerRootEl.innerHTML = "00:00";
+timerRootEl.innerHTML = `
+<div id="xt-1">
+  <div id="xt-2">"00:00"</div>
+</div>
+`;
 body.appendChild(timerRootEl);
 //
 //  style
-const styleEl = document.createElement("style");
+const styleEl = createEl("style");
 styleEl.id = "x-timer-style";
 styleEl.innerHTML = style;
 html.appendChild(styleEl);
 
-// nav
-//
+// 
+// timer
+const timerEl = getId("xt-2")
+timerEl?.innerHTML = elapsedT;
 
 const startCountUp = () => {
   startTime = Date.now();
@@ -75,21 +78,21 @@ const reset = () => {
 };
 
 const limitAlert = () => {
-  //
+  alert("作業進みましたか？");
 };
 
 const countUp = () => {
-  var oldTime = tString;
+  var oldTime = elapsedT;
   const d = new Date(Date.now() - startTime);
   const m = String(d.getMinutes()).padStart(2, "0");
   const s = String(d.getSeconds()).padStart(2, "0");
 
-  tString = `${m}:${s}`;
+  elapsedT = `${m}:${s}`;
 
-  if (tString !== oldTime) {
-    timerRootEl.innerHTML = tString;
-    console.log(tString);
-    if (tString === limit) {
+  if (elapsedT !== oldTime) {
+    timerRootEl.innerHTML = elapsedT;
+    console.log(elapsedT);
+    if (elapsedT === limit) {
       console.log("LIMIT!");
       limitAlert();
       reset();
